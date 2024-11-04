@@ -25,6 +25,7 @@ class Test(unittest.TestCase):
         
         plt.close('all')
         self.assertTrue(os.path.isfile(figname))
+        plt.close('all')
 
 if __name__ == "__main__":
     unittest.main()
