@@ -3,6 +3,8 @@ Import modules here, if needed
 **Restriction: only standard libraries (e.g. 'math') and 'matplotlib' are allowed.
 The use of other external libraries (e.g. 'numpy') is *NOT* allowed in this homework.**
 """
+import math
+import matplotlib.pyplot as plt
 
 """
 Write a python script which creates a plot of the function given by eq. (1) in 'main.ipynb'.
@@ -24,3 +26,20 @@ Your script should carry out the following tasks:
 - Your plot must have expressive labels for the title and axes including physical quantities (e.g. 'distance (m)')
 - The plotted graphic MUST be saved as a figure named 'task1.png'.
 """
+v0 = 80 / 3.6
+theta = math.radians(45)
+g = 9.81
+d = (v0 ** 2 * math.sin(2*theta))/g
+x = [0 + i * (d) / 49 for i in range(50)]
+print(x, d, sep=", ")
+y = [(-g/(2*(v0**2)*(math.cos(theta)**2)))*(x_**2) + math.tan(theta)*x_ for x_ in x]
+for i in range(len(x)):
+    print(f"x = {round(x[i],3)}, y = {round(y[i],3)}")
+    
+plt.plot(x,y, '--mo',label='Trajectory')
+plt.legend()
+plt.title("Ballistic Motion")
+plt.xlabel("Distance [m]")
+plt.ylabel("Height [m]")
+plt.savefig("task1.png")
+plt.show()
